@@ -49,7 +49,7 @@ function App() {
 				{todoList.map((todoItem, i) => <li key={i}>{todoItem}</li>)}
 			</ul>
 
-			<input onChange={updateUserText} type="text" placeholder="nuovo todo" />
+			<input value={userInput} onChange={updateUserText} type="text" placeholder="nuovo todo" />
 			<button onClick={addTodo}>Aggiungi elemento</button>
 
 			<p>Stai per inserire: {userInput}</p>
