@@ -8,17 +8,33 @@ function App() {
 		// const nuovoValore = [...todoList];
 		// nuovoValore.push("Nuovo elemento");
 
-		const nuovoValore = [
+		console.log("Aggiungi nuovo item");
+
+		const nuovoOggettoTodo = {
+			titolo: titolo,
+			descrizione: descrizione,
+			isImportante: isImportante,
+			categoria: categoria,
+		};
+
+		const nuovaLista = [
 			...todoList,
-			userInput
+			nuovoOggettoTodo
 		];
 
-		setTodoList(nuovoValore);
+		setTodoList(nuovaLista);
 
-		setUserInput("");
+		// const nuovoValore = [
+		// 	...todoList,
+		// 	userInput
+		// ];
+
+		// setTodoList(nuovoValore);
+
+		// setUserInput("");
 	}
 
-	function updateUserText(event) {
+	function updateTitolo(event) {
 		// const inputEl = event.target; //il soggetto dell'evento = <input>
 		// const valoreInput = inputEl.value; //il valore dell'input
 
@@ -26,33 +42,80 @@ function App() {
 
 		// setUserInput(valoreInput);
 
-		setUserInput(event.target.value); //<-- versione in unica riga
+		setTitolo(event.target.value); //<-- versione in unica riga
+	}
+
+	function updateDescrizione(event) {
+		setDescrizione(event.target.value);
+	}
+
+	function updateIsImportante(event) {
+		setIsImportante(event.target.checked);
+	}
+
+	function updateCategoria(event) {
+		setCategoria(event.target.value);
 	}
 
 	// const todoListInitial = [
-	// 	"realizzare scaffold",
-	// 	"popolare componenti",
-	// 	"testare applicazione"
+	// {
+	// 	titolo: "Esempio di Todo",
+	// 	descrizione: "Descrizione molto lunga",
+	// 	isImportante: true,
+	// 	categoria: "lavoro",
+	// },
+	// {
+	// 	titolo: "Altro",
+	// 	descrizione: "Descrizione molto lunga",
+	// 	isImportante: false,
+	// 	categoria: "casa",
+	// }
 	// ];
 	// const [todoList, setTodoList] = useState(todoListInitial);
 
 	const [todoList, setTodoList] = useState([]);
 
-	const [userInput, setUserInput] = useState("");
+	const [titolo, setTitolo] = useState('titolone');
+	const [descrizione, setDescrizione] = useState('lunga descrizione');
+	const [isImportante, setIsImportante] = useState(true);
+	const [categoria, setCategoria] = useState('lavoro');
 
 	return (
 		<>
 
+			{/* Visualizzo lista */}
 			<h2>ToDo List</h2>
-
 			<ul>
-				{todoList.map((todoItem, i) => <li key={i}>{todoItem}</li>)}
+				{todoList.map((todoItem, i) =>
+					<li key={i}>{todoItem.titolo} - {todoItem.categoria}</li>
+				)}
 			</ul>
 
-			<input value={userInput} onChange={updateUserText} type="text" placeholder="nuovo todo" />
+			{/* Inserimento nuovo item */}
+
+			<input value={titolo} onChange={updateTitolo} type="text" placeholder="nuovo todo" />
+
+			<textarea value={descrizione} onChange={updateDescrizione} />
+
+			<input type="checkbox" checked={isImportante} onChange={updateIsImportante} />
+
+			<select value={categoria} onChange={updateCategoria}>
+				<option value="casa">Casa</option>
+				<option value="lavoro">Lavoro</option>
+				<option value="altro">Altro</option>
+			</select>
+
+
 			<button onClick={addTodo}>Aggiungi elemento</button>
 
-			<p>Stai per inserire: {userInput}</p>
+			<div>Stai per inserire:
+				<ul>
+					<li>Titolo: {titolo}</li>
+					<li>Descrizione: {descrizione}</li>
+					<li>Is Importante: {isImportante ? "si" : "no"}</li>
+					<li>Categoria: {categoria}</li>
+				</ul>
+			</div>
 
 
 			{/* <Componente /> */}
