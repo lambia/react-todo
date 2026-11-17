@@ -59,18 +59,30 @@ function App() {
 
 				{/* Form inserimento */}
 				<div id="todo-insert-form">
-					<input value={titolo} onChange={updateTitolo} type="text" placeholder="nuovo todo" />
+					<label class="vertical">
+						<span>Titolo</span>
+						<input value={titolo} onChange={updateTitolo} type="text" placeholder="nuovo todo" />
+					</label>
 
-					<textarea value={descrizione} onChange={updateDescrizione} />
+					<label class="vertical">
+						<span>Descrizione</span>
+						<textarea value={descrizione} onChange={updateDescrizione} />
+					</label>
 
-					<input type="checkbox" checked={isImportante} onChange={updateIsImportante} />
+					<label class="vertical">
+						<span>Categoria</span>
+						<select value={categoria} onChange={updateCategoria}>
+							<option value="" disabled>Seleziona una categoria</option>
+							<option value="casa">Casa</option>
+							<option value="lavoro">Lavoro</option>
+							<option value="altro">Altro</option>
+						</select>
+					</label>
 
-					<select value={categoria} onChange={updateCategoria}>
-						<option value="casa">Casa</option>
-						<option value="lavoro">Lavoro</option>
-						<option value="altro">Altro</option>
-					</select>
-
+					<label class="horizontal">
+						<input type="checkbox" checked={isImportante} onChange={updateIsImportante} />
+						<span>Importante</span>
+					</label>
 
 					<button onClick={addTodo}>Aggiungi elemento</button>
 				</div>
