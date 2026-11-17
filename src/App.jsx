@@ -1,15 +1,8 @@
-// import Componente from "@/components/Componente"
-
 import { useState } from "react";
 
 function App() {
 
 	function addTodo() {
-		// const nuovoValore = [...todoList];
-		// nuovoValore.push("Nuovo elemento");
-
-		console.log("Aggiungi nuovo item");
-
 		const nuovoOggettoTodo = {
 			titolo: titolo,
 			descrizione: descrizione,
@@ -23,26 +16,10 @@ function App() {
 		];
 
 		setTodoList(nuovaLista);
-
-		// const nuovoValore = [
-		// 	...todoList,
-		// 	userInput
-		// ];
-
-		// setTodoList(nuovoValore);
-
-		// setUserInput("");
 	}
 
 	function updateTitolo(event) {
-		// const inputEl = event.target; //il soggetto dell'evento = <input>
-		// const valoreInput = inputEl.value; //il valore dell'input
-
-		// console.log("qualcosa è cambiato", valoreInput);
-
-		// setUserInput(valoreInput);
-
-		setTitolo(event.target.value); //<-- versione in unica riga
+		setTitolo(event.target.value);
 	}
 
 	function updateDescrizione(event) {
@@ -56,22 +33,6 @@ function App() {
 	function updateCategoria(event) {
 		setCategoria(event.target.value);
 	}
-
-	// const todoListInitial = [
-	// {
-	// 	titolo: "Esempio di Todo",
-	// 	descrizione: "Descrizione molto lunga",
-	// 	isImportante: true,
-	// 	categoria: "lavoro",
-	// },
-	// {
-	// 	titolo: "Altro",
-	// 	descrizione: "Descrizione molto lunga",
-	// 	isImportante: false,
-	// 	categoria: "casa",
-	// }
-	// ];
-	// const [todoList, setTodoList] = useState(todoListInitial);
 
 	const [todoList, setTodoList] = useState([]);
 
@@ -116,9 +77,6 @@ function App() {
 					<li>Categoria: {categoria}</li>
 				</ul>
 			</div>
-
-
-			{/* <Componente /> */}
 		</>
 	)
 }
