@@ -3,48 +3,56 @@ import { useState } from "react";
 function App() {
 
 	function addTodo() {
-		const nuovoOggettoTodo = {
-			titolo: titolo,
-			descrizione: descrizione,
-			isImportante: isImportante,
-			categoria: categoria,
-		};
 
 		const nuovaLista = [
 			...todoList,
-			nuovoOggettoTodo
+			formData
 		];
+
+		console.log(formData);
 
 		setTodoList(nuovaLista);
 
-		setTitolo("");
-		setDescrizione("");
-		setIsImportante(false);
-		setCategoria("");
+		setFormData({
+			titolo: "",
+			descrizione: "",
+			isImportante: false,
+			categoria: ""
+		});
 	}
 
-	function updateTitolo(event) {
-		setTitolo(event.target.value);
-	}
+	function handleChange(event) {
 
-	function updateDescrizione(event) {
-		setDescrizione(event.target.value);
-	}
+		const nomeCampo = event.target.name;
+		const nuovoValore = event.target.value;
+		const tipoCampo = event.target.type;
 
-	function updateIsImportante(event) {
-		setIsImportante(event.target.checked);
-	}
+		console.log("Campo interessato", nomeCampo);
+		console.log("Tipo campo", tipoCampo);
+		console.log("Nuovo valore", nuovoValore);
 
-	function updateCategoria(event) {
-		setCategoria(event.target.value);
+		const oggettoAggiornato = {
+			...formData
+		};
+
+		if (tipoCampo == "checkbox") {
+			oggettoAggiornato[nomeCampo] = event.target.checked;
+		} else {
+			oggettoAggiornato[nomeCampo] = event.target.value;
+		}
+
+		setFormData(oggettoAggiornato);
+
 	}
 
 	const [todoList, setTodoList] = useState([]);
 
-	const [titolo, setTitolo] = useState('');
-	const [descrizione, setDescrizione] = useState('');
-	const [isImportante, setIsImportante] = useState(false);
-	const [categoria, setCategoria] = useState('');
+	const [formData, setFormData] = useState({
+		titolo: "",
+		descrizione: "",
+		isImportante: false,
+		categoria: ""
+	});
 
 	return (
 		<>
@@ -66,17 +74,17 @@ function App() {
 				<div id="todo-insert-form">
 					<label className="vertical">
 						<span>Titolo</span>
-						<input value={titolo} onChange={updateTitolo} type="text" placeholder="Titolo ToDo" />
+						<input name="titolo" value={formData.titolo} onChange={handleChange} type="text" placeholder="Titolo ToDo" />
 					</label>
 
 					<label className="vertical">
 						<span>Descrizione</span>
-						<textarea value={descrizione} onChange={updateDescrizione} placeholder="Descrizione ToDo" />
+						<textarea name="descrizione" value={formData.descrizione} onChange={handleChange} placeholder="Descrizione ToDo" />
 					</label>
 
 					<label className="vertical">
 						<span>Categoria</span>
-						<select value={categoria} onChange={updateCategoria}>
+						<select name="categoria" value={formData.categoria} onChange={handleChange}>
 							<option value="" disabled>Seleziona una categoria</option>
 							<option value="casa">Casa</option>
 							<option value="lavoro">Lavoro</option>
@@ -85,7 +93,7 @@ function App() {
 					</label>
 
 					<label className="horizontal">
-						<input type="checkbox" checked={isImportante} onChange={updateIsImportante} />
+						<input name="isImportante" type="checkbox" checked={formData.isImportante} onChange={handleChange} />
 						<span>Importante</span>
 					</label>
 
@@ -96,10 +104,10 @@ function App() {
 				<div id="todo-insert-preview">
 					<div>Stai per inserire:
 						<ul>
-							<li>Titolo: {titolo || "vuoto"}</li>
-							<li>Descrizione: {descrizione || "vuota"}</li>
-							<li>Categoria: {categoria || "nessuna"}</li>
-							<li>Importante: {isImportante ? "si" : "no"}</li>
+							<li>Titolo: {formData.titolo || "vuoto"}</li>
+							<li>Descrizione: {formData.descrizione || "vuota"}</li>
+							<li>Categoria: {formData.categoria || "nessuna"}</li>
+							<li>Importante: {formData.isImportante ? "si" : "no"}</li>
 						</ul>
 					</div>
 				</div>
