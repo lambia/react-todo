@@ -36,10 +36,10 @@ function App() {
 
 	const [todoList, setTodoList] = useState([]);
 
-	const [titolo, setTitolo] = useState('titolone');
-	const [descrizione, setDescrizione] = useState('lunga descrizione');
-	const [isImportante, setIsImportante] = useState(true);
-	const [categoria, setCategoria] = useState('lavoro');
+	const [titolo, setTitolo] = useState('');
+	const [descrizione, setDescrizione] = useState('');
+	const [isImportante, setIsImportante] = useState(false);
+	const [categoria, setCategoria] = useState('');
 
 	return (
 		<>
@@ -61,12 +61,12 @@ function App() {
 				<div id="todo-insert-form">
 					<label class="vertical">
 						<span>Titolo</span>
-						<input value={titolo} onChange={updateTitolo} type="text" placeholder="nuovo todo" />
+						<input value={titolo} onChange={updateTitolo} type="text" placeholder="Titolo ToDo" />
 					</label>
 
 					<label class="vertical">
 						<span>Descrizione</span>
-						<textarea value={descrizione} onChange={updateDescrizione} />
+						<textarea value={descrizione} onChange={updateDescrizione} placeholder="Descrizione ToDo" />
 					</label>
 
 					<label class="vertical">
