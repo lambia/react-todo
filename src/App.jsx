@@ -52,11 +52,11 @@ function App() {
 			{/* Visualizzo lista */}
 			<div id="todo-list">
 				<h2>ToDo List</h2>
-				<ul>
-					{todoList.map((todoItem, i) =>
-						<li key={i}>{todoItem.titolo} - {todoItem.categoria}</li>
-					)}
-				</ul>
+
+				{todoList.length
+					? <ul>{todoList.map((todoItem, i) => <li key={i}>{todoItem.titolo} - {todoItem.categoria}</li>)}</ul>
+					: <p>La lista al momento è vuota</p>
+				}
 			</div>
 
 			{/* Inserimento nuovo item */}
