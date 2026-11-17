@@ -16,6 +16,11 @@ function App() {
 		];
 
 		setTodoList(nuovaLista);
+
+		setTitolo("");
+		setDescrizione("");
+		setIsImportante(false);
+		setCategoria("");
 	}
 
 	function updateTitolo(event) {
