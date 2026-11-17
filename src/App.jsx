@@ -64,17 +64,17 @@ function App() {
 
 				{/* Form inserimento */}
 				<div id="todo-insert-form">
-					<label class="vertical">
+					<label className="vertical">
 						<span>Titolo</span>
 						<input value={titolo} onChange={updateTitolo} type="text" placeholder="Titolo ToDo" />
 					</label>
 
-					<label class="vertical">
+					<label className="vertical">
 						<span>Descrizione</span>
 						<textarea value={descrizione} onChange={updateDescrizione} placeholder="Descrizione ToDo" />
 					</label>
 
-					<label class="vertical">
+					<label className="vertical">
 						<span>Categoria</span>
 						<select value={categoria} onChange={updateCategoria}>
 							<option value="" disabled>Seleziona una categoria</option>
@@ -84,7 +84,7 @@ function App() {
 						</select>
 					</label>
 
-					<label class="horizontal">
+					<label className="horizontal">
 						<input type="checkbox" checked={isImportante} onChange={updateIsImportante} />
 						<span>Importante</span>
 					</label>
