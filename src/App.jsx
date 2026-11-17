@@ -96,10 +96,10 @@ function App() {
 				<div id="todo-insert-preview">
 					<div>Stai per inserire:
 						<ul>
-							<li>Titolo: {titolo}</li>
-							<li>Descrizione: {descrizione}</li>
-							<li>Is Importante: {isImportante ? "si" : "no"}</li>
-							<li>Categoria: {categoria}</li>
+							<li>Titolo: {titolo || "vuoto"}</li>
+							<li>Descrizione: {descrizione || "vuota"}</li>
+							<li>Categoria: {categoria || "nessuna"}</li>
+							<li>Importante: {isImportante ? "si" : "no"}</li>
 						</ul>
 					</div>
 				</div>
