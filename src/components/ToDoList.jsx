@@ -2,16 +2,18 @@ import { useState } from "react";
 
 function ToDoList() {
 
-	//Preparo lo state con un array vuoto (la lista dei todo)
-	const [todoList, setTodoList] = useState([]);
-
-	//Preparo lo state con un oggetto dove inserire la nuova todo
-	const [formData, setFormData] = useState({
+	const formDefault = {
 		titolo: "",
 		descrizione: "",
 		isImportante: false,
 		categoria: ""
-	});
+	};
+
+	//Preparo lo state con un array vuoto (la lista dei todo)
+	const [todoList, setTodoList] = useState([]);
+
+	//Preparo lo state con un oggetto dove inserire la nuova todo
+	const [formData, setFormData] = useState(formDefault);
 
 	//Metodo per inserire il nuovo oggetto nell'array
 	function addTodo() {
@@ -21,16 +23,10 @@ function ToDoList() {
 			formData
 		];
 
-		console.log(formData);
-
 		setTodoList(nuovaLista);
 
-		setFormData({
-			titolo: "",
-			descrizione: "",
-			isImportante: false,
-			categoria: ""
-		});
+		setFormData(formDefault);
+
 	}
 
 	//Metodo per aggiornare gli state collegati ai campi del form
