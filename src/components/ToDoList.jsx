@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function ToDoList() {
 
@@ -14,6 +14,10 @@ function ToDoList() {
 
 	//Preparo lo state con un oggetto dove inserire la nuova todo
 	const [formData, setFormData] = useState(formDefault);
+
+	//Recupero ToDo all'avvio del componente
+	//getTodos //errore! andrebbe in loop!
+	useEffect(getTodos, []); //metodo corretto
 
 	function getTodos() {
 
