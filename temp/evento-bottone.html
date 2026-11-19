@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+	<button id="bottone">Ciao!</button>
+	<p id="risultati"></p>
+
+	<script>
+		document.getElementById("bottone").addEventListener("click", clickBottone);
+
+		function clickBottone(event) {
+			// document.getElementById("risultati").innerHTML += `<p>Click</p>`;
+			console.log(event.target.innerText);
+
+			// elementoCliccato.disabled = true;
+			// elementoCliccato.innerText = "Non puoi cliccare";
+		}
+	</script>
+
+</body>
+
+</html>
