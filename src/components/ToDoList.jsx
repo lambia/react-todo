@@ -36,14 +36,27 @@ function ToDoList() {
 	//Metodo per inserire il nuovo oggetto nell'array
 	function addTodo() {
 
-		const nuovaLista = [
-			...todoList,
-			formData
-		];
+		const url = "http://localhost:3000/api/todos"
+		const config = {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(formData)
+		};
 
-		setTodoList(nuovaLista);
-
-		setFormData(formDefault);
+		fetch(url, config)
+			.then(response => {
+				if (!response.ok) { throw new Error("Chiamata non ok"); }
+				return response.json();
+			})
+			.then(data => {
+				console.log("Risultato aggiunta: ", data);
+				setFormData(formDefault); //reset del form
+			})
+			.catch(error => {
+				console.error("qualcosa è andato storto");
+			});
 
 	}
 
