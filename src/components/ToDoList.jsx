@@ -15,6 +15,24 @@ function ToDoList() {
 	//Preparo lo state con un oggetto dove inserire la nuova todo
 	const [formData, setFormData] = useState(formDefault);
 
+	function getTodos() {
+
+		const url = "http://localhost:3000/api/todos"
+
+		fetch(url)
+			.then(response => {
+				if (!response.ok) { throw new Error("Chiamata non ok"); }
+				return response.json();
+			})
+			.then(data => {
+				console.log(data);
+				setTodoList(data);
+			})
+			.catch(error => {
+				console.error("qualcosa è andato storto");
+			});
+	}
+
 	//Metodo per inserire il nuovo oggetto nell'array
 	function addTodo() {
 
@@ -58,6 +76,7 @@ function ToDoList() {
 		{/* Visualizzo lista */}
 		<div id="todo-list">
 			<h2>ToDo List</h2>
+			<button onClick={getTodos}>Recupera Lista</button>
 
 			{todoList.length
 				? <ul>{todoList.map((todoItem, i) => <li key={i}>{todoItem.titolo} - {todoItem.categoria}</li>)}</ul>
