@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 
 function ToDoList() {
 
@@ -109,10 +110,13 @@ function ToDoList() {
 			<h2>ToDo List</h2>
 			<button onClick={getTodos}>Recupera Lista</button>
 
-			{todoList.length
-				? <ul>{todoList.map((todoItem, i) => <li key={i}>{todoItem.titolo} - {todoItem.categoria}</li>)}</ul>
-				: <p>La lista al momento è vuota</p>
-			}
+			<div className="todo-list-links">
+				{
+					todoList.length
+						? todoList.map((todoItem, i) => <Link key={i} to={`/todo/${todoItem.id}`}>{todoItem.titolo}</Link>)
+						: <p>La lista al momento è vuota</p>
+				}
+			</div>
 		</div>
 
 		{/* Inserimento nuovo item */}

@@ -1,7 +1,7 @@
 import ToDoList from "@/components/ToDoList";
 import AppNavbar from "@/components/AppNavbar";
 
-function TodoPage() {
+function TodoListPage() {
 
 	return (
 		<div>
@@ -14,4 +14,4 @@ function TodoPage() {
 
 }
 
-export default TodoPage;
+export default TodoListPage;

@@ -27,6 +27,11 @@ ul {
 	margin-bottom: 2rem;
 }
 
+.todo-list-links {
+	display: flex;
+	flex-direction: column;
+}
+
 #todo-insert {
 	display: flex;
 	flex-direction: row;
