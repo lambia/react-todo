@@ -18,7 +18,7 @@ function ToDoList() {
 	const [isEditing, setIsEditing] = useState(true);
 
 	//Recupero ToDo all'avvio del componente
-	//getTodos //errore! andrebbe in loop!
+	// getTodos(); //errore! andrebbe in loop!
 	useEffect(getTodos, []); //metodo corretto
 
 	//const isDisabled = formData.titolo == "" || formData.categoria == "" || formData.descrizione == "";
