@@ -88,3 +88,23 @@ ul {
 .error {
 	color: crimson;
 }
+
+header {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
+}
+
+header a {
+	color: white;
+	text-decoration: none;
+
+	&:hover {
+		color: orange;
+	}
+}
+
+header .active {
+	font-weight: 700;
+	color: orangered;
+}
