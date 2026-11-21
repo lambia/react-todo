@@ -43,7 +43,9 @@ function ToDoList() {
 	}
 
 	//Metodo per inserire il nuovo oggetto nell'array
-	function addTodo() {
+	function addTodo(event) {
+
+		event.preventDefault();
 
 		const url = "http://localhost:3000/api/todos"
 		const config = {
@@ -115,7 +117,7 @@ function ToDoList() {
 
 			{/* Form inserimento */}
 			{isEditing == true && (
-				<div id="todo-insert-form">
+				<form id="todo-insert-form" onSubmit={addTodo}>
 					<label className="vertical">
 						<span>Titolo</span>
 						<input name="titolo" value={formData.titolo} onChange={handleChange} type="text" placeholder="Titolo ToDo" />
@@ -142,8 +144,8 @@ function ToDoList() {
 						<span>Importante</span>
 					</label>
 
-					<button onClick={addTodo} disabled={isDisabled}>Aggiungi elemento</button>
-				</div>
+					<button disabled={isDisabled}>Aggiungi elemento</button>
+				</form>
 			)}
 
 
