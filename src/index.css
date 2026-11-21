@@ -89,13 +89,7 @@ ul {
 	color: crimson;
 }
 
-header {
-	display: flex;
-	flex-direction: row;
-	gap: 1rem;
-}
-
-header a {
+a {
 	color: white;
 	text-decoration: none;
 
@@ -104,7 +98,13 @@ header a {
 	}
 }
 
-header .active {
+a.active {
 	font-weight: 700;
 	color: orangered;
+}
+
+header {
+	display: flex;
+	flex-direction: row;
+	gap: 1rem;
 }
