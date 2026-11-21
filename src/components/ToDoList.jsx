@@ -124,7 +124,7 @@ function ToDoList() {
 					<label className="vertical">
 						<span>Titolo</span>
 						<input name="titolo" value={formData.titolo} onChange={handleChange} type="text" placeholder="Titolo ToDo" />
-						{formData.titolo == "" && <p className="error">Il titolo è obbligatorio</p>}
+						{formData.titolo.trim() == "" && <p className="error">Il titolo è obbligatorio</p>}
 					</label>
 
 					<label className="vertical">
