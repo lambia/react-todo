@@ -19,6 +19,9 @@ function ToDoList() {
 	//getTodos //errore! andrebbe in loop!
 	useEffect(getTodos, []); //metodo corretto
 
+	//const isDisabled = formData.titolo == "" || formData.categoria == "" || formData.descrizione == "";
+	const isDisabled = formData.titolo == "";
+
 	function getTodos() {
 
 		const url = "http://localhost:3000/api/todos"
@@ -131,7 +134,7 @@ function ToDoList() {
 					<span>Importante</span>
 				</label>
 
-				<button onClick={addTodo}>Aggiungi elemento</button>
+				<button onClick={addTodo} disabled={isDisabled}>Aggiungi elemento</button>
 			</div>
 
 			{/* Pannello preview */}
