@@ -84,3 +84,7 @@ ul {
 	padding: 1rem;
 	border-radius: 0.5rem;
 }
+
+.error {
+	color: crimson;
+}

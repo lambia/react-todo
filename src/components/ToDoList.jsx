@@ -15,6 +15,8 @@ function ToDoList() {
 	//Preparo lo state con un oggetto dove inserire la nuova todo
 	const [formData, setFormData] = useState(formDefault);
 
+	const [isEditing, setIsEditing] = useState(true);
+
 	//Recupero ToDo all'avvio del componente
 	//getTodos //errore! andrebbe in loop!
 	useEffect(getTodos, []); //metodo corretto
@@ -52,6 +54,8 @@ function ToDoList() {
 			body: JSON.stringify(formData)
 		};
 
+		console.log("Sto per inviare: ", config.body);
+
 		fetch(url, config)
 			.then(response => {
 				if (!response.ok) { throw new Error("Chiamata non ok"); }
@@ -65,6 +69,8 @@ function ToDoList() {
 				console.error("qualcosa è andato storto");
 			});
 
+		setIsEditing(false);
+
 	}
 
 	//Metodo per aggiornare gli state collegati ai campi del form
@@ -74,9 +80,9 @@ function ToDoList() {
 		const nuovoValore = event.target.value;
 		const tipoCampo = event.target.type;
 
-		console.log("Campo interessato", nomeCampo);
-		console.log("Tipo campo", tipoCampo);
-		console.log("Nuovo valore", nuovoValore);
+		// console.log("Campo interessato", nomeCampo);
+		// console.log("Tipo campo", tipoCampo);
+		// console.log("Nuovo valore", nuovoValore);
 
 		const oggettoAggiornato = {
 			...formData
@@ -108,46 +114,54 @@ function ToDoList() {
 		<div id="todo-insert">
 
 			{/* Form inserimento */}
-			<div id="todo-insert-form">
-				<label className="vertical">
-					<span>Titolo</span>
-					<input name="titolo" value={formData.titolo} onChange={handleChange} type="text" placeholder="Titolo ToDo" />
-				</label>
+			{isEditing == true && (
+				<div id="todo-insert-form">
+					<label className="vertical">
+						<span>Titolo</span>
+						<input name="titolo" value={formData.titolo} onChange={handleChange} type="text" placeholder="Titolo ToDo" />
+						{formData.titolo == "" && <p className="error">Il titolo è obbligatorio</p>}
+					</label>
 
-				<label className="vertical">
-					<span>Descrizione</span>
-					<textarea name="descrizione" value={formData.descrizione} onChange={handleChange} placeholder="Descrizione ToDo" />
-				</label>
+					<label className="vertical">
+						<span>Descrizione</span>
+						<textarea name="descrizione" value={formData.descrizione} onChange={handleChange} placeholder="Descrizione ToDo" />
+					</label>
 
-				<label className="vertical">
-					<span>Categoria</span>
-					<select name="categoria" value={formData.categoria} onChange={handleChange}>
-						<option value="" disabled>Seleziona una categoria</option>
-						<option value="casa">Casa</option>
-						<option value="lavoro">Lavoro</option>
-						<option value="altro">Altro</option>
-					</select>
-				</label>
+					<label className="vertical">
+						<span>Categoria</span>
+						<select name="categoria" value={formData.categoria} onChange={handleChange}>
+							<option value="" disabled>Seleziona una categoria</option>
+							<option value="casa">Casa</option>
+							<option value="lavoro">Lavoro</option>
+							<option value="altro">Altro</option>
+						</select>
+					</label>
 
-				<label className="horizontal">
-					<input name="isImportante" type="checkbox" checked={formData.isImportante} onChange={handleChange} />
-					<span>Importante</span>
-				</label>
+					<label className="horizontal">
+						<input name="isImportante" type="checkbox" checked={formData.isImportante} onChange={handleChange} />
+						<span>Importante</span>
+					</label>
 
-				<button onClick={addTodo} disabled={isDisabled}>Aggiungi elemento</button>
-			</div>
+					<button onClick={addTodo} disabled={isDisabled}>Aggiungi elemento</button>
+				</div>
+			)}
+
 
 			{/* Pannello preview */}
-			<div id="todo-insert-preview">
-				<div>Stai per inserire:
-					<ul>
-						<li>Titolo: {formData.titolo || "vuoto"}</li>
-						<li>Descrizione: {formData.descrizione || "vuota"}</li>
-						<li>Categoria: {formData.categoria || "nessuna"}</li>
-						<li>Importante: {formData.isImportante ? "si" : "no"}</li>
-					</ul>
+			{isEditing == false && (
+				<div id="todo-insert-preview">
+					<div>Stai per inserire:
+						<ul>
+							<li>Titolo: {formData.titolo || "vuoto"}</li>
+							<li>Descrizione: {formData.descrizione || "vuota"}</li>
+							<li>Categoria: {formData.categoria || "nessuna"}</li>
+							<li>Importante: {formData.isImportante ? "si" : "no"}</li>
+						</ul>
+						<button onClick={e => setIsEditing(true)}>Torna all'editing</button>
+					</div>
 				</div>
-			</div>
+			)}
+
 
 		</div>
 	</>
