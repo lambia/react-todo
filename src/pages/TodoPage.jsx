@@ -1,15 +1,11 @@
-import { NavLink } from "react-router";
 import ToDoList from "@/components/ToDoList";
+import AppNavbar from "@/components/AppNavbar";
 
-function TodoList() {
+function TodoPage() {
 
 	return (
 		<div>
-			<header>
-				<NavLink to="/">Home</NavLink>
-				<NavLink to="/about">About</NavLink>
-				<NavLink to="/todo">ToDo</NavLink>
-			</header>
+			<AppNavbar />
 
 			<ToDoList />
 
@@ -18,4 +14,4 @@ function TodoList() {
 
 }
 
-export default TodoList;
+export default TodoPage;

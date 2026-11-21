@@ -1,14 +1,10 @@
-import { NavLink } from "react-router";
+import AppNavbar from "@/components/AppNavbar";
 
-function About() {
+function AboutPage() {
 
 	return (
 		<div>
-			<header>
-				<NavLink to="/">Home</NavLink>
-				<NavLink to="/about">About</NavLink>
-				<NavLink to="/todo">ToDo</NavLink>
-			</header>
+			<AppNavbar />
 			<h1>About</h1>
 			<p>Chi siamo ecc...</p>
 		</div>
@@ -16,4 +12,4 @@ function About() {
 
 }
 
-export default About;
+export default AboutPage;
