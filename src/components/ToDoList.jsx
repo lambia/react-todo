@@ -65,13 +65,16 @@ function ToDoList() {
 			})
 			.then(data => {
 				console.log("Risultato aggiunta: ", data);
+
 				setFormData(formDefault); //reset del form
+				setIsEditing(true); //riporta al form di inserimento (cioè chiudi preview)
+				getTodos(); //aggiorna la lista di todo visualizzati
+
 			})
 			.catch(error => {
 				console.error("qualcosa è andato storto");
 			});
 
-		setIsEditing(false);
 
 	}
 
@@ -117,7 +120,7 @@ function ToDoList() {
 
 			{/* Form inserimento */}
 			{isEditing == true && (
-				<form id="todo-insert-form" onSubmit={addTodo}>
+				<form id="todo-insert-form" onSubmit={e => setIsEditing(false)}>
 					<label className="vertical">
 						<span>Titolo</span>
 						<input name="titolo" value={formData.titolo} onChange={handleChange} type="text" placeholder="Titolo ToDo" />
@@ -160,6 +163,7 @@ function ToDoList() {
 							<li>Importante: {formData.isImportante ? "si" : "no"}</li>
 						</ul>
 						<button onClick={e => setIsEditing(true)}>Torna all'editing</button>
+						<button onClick={addTodo}>Salva</button>
 					</div>
 				</div>
 			)}
