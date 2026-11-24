@@ -16,7 +16,8 @@ function ToDoList() {
 	//Preparo lo state con un oggetto dove inserire la nuova todo
 	const [formData, setFormData] = useState(formDefault);
 
-	const [isEditing, setIsEditing] = useState(true);
+	//Azione corrente, possibili valori: "list", "form" o "preview"
+	const [currentAction, setCurrentAction] = useState("list");
 
 	//Recupero ToDo all'avvio del componente
 	// getTodos(); //errore! andrebbe in loop!
@@ -68,7 +69,7 @@ function ToDoList() {
 				console.log("Risultato aggiunta: ", data);
 
 				setFormData(formDefault); //reset del form
-				setIsEditing(true); //riporta al form di inserimento (cioè chiudi preview)
+				setCurrentAction("list"); //chiudi preview e form!
 				getTodos(); //aggiorna la lista di todo visualizzati
 
 			})
@@ -104,11 +105,21 @@ function ToDoList() {
 
 	}
 
+	//Metodo per aprire il form di inserimento nuovo todo
+	function goToForm() {
+		setFormData(formDefault); //reset del form
+		setCurrentAction("form");
+	}
+
 	return <>
 		{/* Visualizzo lista */}
 		<div id="todo-list">
 			<h2>ToDo List</h2>
-			<button onClick={getTodos}>Recupera Lista</button>
+			<div className="buttons">
+				<button onClick={getTodos}>Recupera Lista</button>
+				{/* Tasto per passare in inserimento */}
+				{currentAction == "list" && <button onClick={goToForm}>Aggiungi elemento</button>}
+			</div>
 
 			<div className="todo-list-links">
 				{
@@ -123,8 +134,8 @@ function ToDoList() {
 		<div id="todo-insert">
 
 			{/* Form inserimento */}
-			{isEditing == true && (
-				<form id="todo-insert-form" onSubmit={e => setIsEditing(false)}>
+			{currentAction == "form" && (
+				<form id="todo-insert-form" onSubmit={e => setCurrentAction("preview")}>
 					<label className="vertical">
 						<span>Titolo</span>
 						<input name="titolo" value={formData.titolo} onChange={handleChange} type="text" placeholder="Titolo ToDo" />
@@ -151,13 +162,16 @@ function ToDoList() {
 						<span>Importante</span>
 					</label>
 
-					<button disabled={isDisabled}>Aggiungi elemento</button>
+					<div className="buttons">
+						<button type="button" onClick={e => setCurrentAction("list")}>Annulla</button>
+						<button type="submit" disabled={isDisabled}>Aggiungi elemento</button>
+					</div>
 				</form>
 			)}
 
 
 			{/* Pannello preview */}
-			{isEditing == false && (
+			{currentAction == "preview" && (
 				<div id="todo-insert-preview">
 					<div>Stai per inserire:
 						<ul>
@@ -166,8 +180,9 @@ function ToDoList() {
 							<li>Categoria: {formData.categoria || "nessuna"}</li>
 							<li>Importante: {formData.isImportante ? "si" : "no"}</li>
 						</ul>
-						<div className="todo-insert-buttons">
-							<button onClick={e => setIsEditing(true)}>Torna all'editing</button>
+						<div className="buttons">
+							<button onClick={e => setCurrentAction("list")}>Annulla</button>
+							<button onClick={e => setCurrentAction("form")}>Torna all'editing</button>
 							<button onClick={addTodo}>Salva</button>
 						</div>
 					</div>
