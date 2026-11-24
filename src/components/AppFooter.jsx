@@ -1,7 +1,12 @@
-function AppFooter() {
+function AppFooter(props) {
+
+	const { message } = props;
 
 	return (
-		<>Made with 💙 in Boolean</>
+		<>
+			<div>{message}</div>
+			<div>&copy; 2026</div>
+		</>
 	);
 
 }

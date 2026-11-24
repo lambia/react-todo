@@ -13,7 +13,7 @@ function DefaultLayout() {
 				<Outlet />
 			</main>
 			<footer>
-				<AppFooter />
+				<AppFooter message="Made with 💙 in Boolean" />
 			</footer>
 		</>
 	)
