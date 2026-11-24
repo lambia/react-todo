@@ -166,8 +166,10 @@ function ToDoList() {
 							<li>Categoria: {formData.categoria || "nessuna"}</li>
 							<li>Importante: {formData.isImportante ? "si" : "no"}</li>
 						</ul>
-						<button onClick={e => setIsEditing(true)}>Torna all'editing</button>
-						<button onClick={addTodo}>Salva</button>
+						<div className="todo-insert-buttons">
+							<button onClick={e => setIsEditing(true)}>Torna all'editing</button>
+							<button onClick={addTodo}>Salva</button>
+						</div>
 					</div>
 				</div>
 			)}

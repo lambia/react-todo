@@ -4,10 +4,13 @@ import { Link } from "react-router";
 function NotFoundPage() {
 
 	return (
-		<div>
-			<p>404 - Not Found</p>
-			<Link to="/">Torna alla home</Link>
-		</div>
+		<>
+			<AppNavbar />
+			<main>
+				<p>404 - Not Found</p>
+				<Link to="/">Torna alla home</Link>
+			</main>
+		</>
 	)
 
 }

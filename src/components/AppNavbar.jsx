@@ -4,9 +4,11 @@ function AppNavbar() {
 
 	return (
 		<header>
-			<NavLink to="/">Home</NavLink>
-			<NavLink to="/about">About</NavLink>
-			<NavLink to="/todo">ToDo</NavLink>
+			<nav>
+				<NavLink to="/">Home</NavLink>
+				<NavLink to="/about">About</NavLink>
+				<NavLink to="/todo">ToDo</NavLink>
+			</nav>
 		</header>
 	);
 

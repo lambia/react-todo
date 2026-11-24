@@ -4,12 +4,12 @@ import AppNavbar from "@/components/AppNavbar";
 function TodoDetailPage() {
 
 	return (
-		<div>
+		<>
 			<AppNavbar />
-
-			<ToDoDetail />
-
-		</div>
+			<main>
+				<ToDoDetail />
+			</main>
+		</>
 	)
 
 }
