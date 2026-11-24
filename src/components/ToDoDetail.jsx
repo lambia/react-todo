@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate, Link } from "react-router";
 
 function ToDoList() {
 
@@ -42,6 +42,7 @@ function ToDoList() {
 					<li>Importante: {todoItem.isImportante ? "si" : "no"}</li>
 				</ul>
 			</div>
+			<Link to="/todo">Torna alla lista</Link>
 		</div>
 	</>
 }
