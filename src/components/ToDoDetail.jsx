@@ -28,7 +28,7 @@ function ToDoList() {
 			})
 			.catch(error => {
 				console.error("qualcosa è andato storto");
-				navigate("/todo");
+				// navigate("/todo");
 			});
 	}
 
