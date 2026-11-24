@@ -7,6 +7,7 @@ import TodoDetailPage from "./pages/TodoDetailPage";
 import NotFoundPage from "./pages/NotFoundPage";
 
 import DefaultLayout from "./layouts/DefaultLayout";
+import FullpageLayout from "./layouts/FullpageLayout";
 
 function App() {
 
@@ -19,6 +20,9 @@ function App() {
 					<Route path="/about" Component={AboutPage} />
 					<Route path="/todo" Component={TodoListPage} />
 					<Route path="/todo/:id" Component={TodoDetailPage} />
+				</Route>
+
+				<Route Component={FullpageLayout}>
 					<Route path="*" Component={NotFoundPage} />
 				</Route>
 
