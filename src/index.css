@@ -104,9 +104,6 @@ a.active {
 	}
 }
 
-/* Fine CSS ToDo List ******************************************/
-/* Inizio CSS ToDo Insert **************************************/
-
 #todo-insert-form {
 	width: calc(50% - 0.5rem);
 	min-width: 20rem;
