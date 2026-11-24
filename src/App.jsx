@@ -18,8 +18,16 @@ function App() {
 				<Route Component={DefaultLayout}>
 					<Route path="/" Component={HomePage} />
 					<Route path="/about" Component={AboutPage} />
-					<Route path="/todo" Component={TodoListPage} />
-					<Route path="/todo/:id" Component={TodoDetailPage} />
+
+					{/* <Route path="/todo" Component={TodoListPage} />
+					<Route path="/todo/:id" Component={TodoDetailPage} /> */}
+
+					{/* Rotte identiche a sopra, ma annidate */}
+					<Route path="/todo/">
+						<Route path="" Component={TodoListPage} />
+						<Route path=":id" Component={TodoDetailPage} />
+					</Route>
+
 				</Route>
 
 				<Route Component={FullpageLayout}>
