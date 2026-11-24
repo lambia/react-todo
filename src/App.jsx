@@ -24,7 +24,7 @@ function App() {
 
 					{/* Rotte identiche a sopra, ma annidate */}
 					<Route path="/todo/">
-						<Route path="" Component={TodoListPage} />
+						<Route index Component={TodoListPage} />
 						<Route path=":id" Component={TodoDetailPage} />
 					</Route>
 
